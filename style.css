@@ -1,22 +1,42 @@
-let total = 0;
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    padding: 20px;
+}
 
-function addExpense() {
-    const name = document.getElementById("expenseName").value;
-    const amount = parseFloat(document.getElementById("expenseAmount").value);
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
 
-    if (name === "" || isNaN(amount)) {
-        alert("Please enter valid expense details");
-        return;
-    }
+input,
+select,
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
 
-    const li = document.createElement("li");
-    li.innerHTML = `${name} <span>₹${amount}</span>`;
+button {
+    cursor: pointer;
+}
 
-    document.getElementById("expenseList").appendChild(li);
+ul {
+    list-style: none;
+    padding: 0;
+}
 
-    total += amount;
-    document.getElementById("total").textContent = total;
+li {
+    background: #eee;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
 
-    document.getElementById("expenseName").value = "";
-    document.getElementById("expenseAmount").value = "";
+.delete-btn {
+    float: right;
 }
