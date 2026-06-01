@@ -1,49 +1,22 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
-    margin: 0;
-    padding: 20px;
-}
+let total = 0;
 
-.container {
-    max-width: 700px;
-    margin: auto;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
+function addExpense() {
+    const name = document.getElementById("expenseName").value;
+    const amount = parseFloat(document.getElementById("expenseAmount").value);
 
-h1 {
-    text-align: center;
-}
+    if (name === "" || isNaN(amount)) {
+        alert("Please enter valid expense details");
+        return;
+    }
 
-.expense-form {
-    display: flex;
-    gap: 10px;
-    margin: 20px 0;
-}
+    const li = document.createElement("li");
+    li.innerHTML = `${name} - ₹${amount}`;
 
-input {
-    flex: 1;
-    padding: 10px;
-}
+    document.getElementById("expenseList").appendChild(li);
 
-button {
-    padding: 10px 15px;
-    cursor: pointer;
-}
+    total += amount;
+    document.getElementById("total").textContent = total;
 
-.summary {
-    margin: 20px 0;
-    font-weight: bold;
-}
-
-li {
-    display: flex;
-    justify-content: space-between;
-    background: #eef2f7;
-    margin: 8px 0;
-    padding: 10px;
-    border-radius: 8px;
+    document.getElementById("expenseName").value = "";
+    document.getElementById("expenseAmount").value = "";
 }
